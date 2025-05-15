@@ -37,12 +37,22 @@ for i in range(ztNum-1):
     if (ztLines[i] != '\n'):
         # modify config.txt file
         f2 = open("D:/share/config.txt", "w")
+        
         lines[0] = ztLines[i+1][0:9] + '\n'
         lines[1] = '1\n'
+        '''
+        lines[0] = ztLines[i][0:9] + '\n'
+        listTemp = ztLines[i].split('_')
+        lines[1] = listTemp[1]
+        '''
+        print (str(lines[0]) + '\n')
         lines[11] = '2.05\n'
-        lines[12] = ztLines[i] + '\n'
-        f2.writelines(lines[0:13])
-        #f2.writeline('\n')
+        lines[12] = ztLines[i]
+        if (i > 1):
+            lines[13] = ztLines[i-1]
+            lines[14] = ztLines[i-2]
+        f2.writelines(lines[0:15])
+        f2.write('\n')
         f2.close()
 
         main = u'D:/share/shareAnalyze/shareAnalyze/x64/Release/shareAnalyze.exe'
